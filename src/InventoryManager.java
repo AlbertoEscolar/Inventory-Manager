@@ -31,7 +31,7 @@ public class InventoryManager {
 //	    Producto buscarProducto(String nombre): Devuelve un producto basado en su nombre.
 //	    void venderProducto(String nombre, int cantidad): Reduce la cantidad disponible de un producto.
 //	    boolean salir(): Permite al usuario salir del programa.
-	
+	//Test
 	
 	public static void main(String[] args) {
 
