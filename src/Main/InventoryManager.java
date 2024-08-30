@@ -1,8 +1,11 @@
 package Main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Controller.InventoryController;
+import Model.Producto;
 
 public class InventoryManager {
 
@@ -50,11 +53,16 @@ public class InventoryManager {
 			
 			InventoryController invController = new InventoryController();
 			
+			List<Producto> lstProductos = new ArrayList<Producto>();
+			
 			//Infinite loop
 			while (0 != 1) {
 				
+				System.out.println();
+				
 				displayMenu();
 				
+				System.out.println();
 				System.out.println("Introduzca número para seleccionar la tarea a realizar: ");
 				try  {
 					intSelectedNum = scanIn.nextInt();								
@@ -65,15 +73,15 @@ public class InventoryManager {
 				switch (intSelectedNum) {
 				
 					case 1: {
-						invController.agregarProducto(scanIn);
+						invController.agregarProducto(scanIn, lstProductos);						
 						break;
 					}
 					case 2: {
-						
+						invController.mostrarProductos(lstProductos);						
 						break;
 					}
 					case 3: {
-						
+						invController.buscarProducto(scanIn, lstProductos);
 						break;
 					}
 					case 4: {
@@ -106,4 +114,5 @@ public class InventoryManager {
 		System.out.println();
 	}
 			
+	
 }

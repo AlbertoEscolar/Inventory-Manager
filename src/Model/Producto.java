@@ -5,8 +5,7 @@ public class Producto {
 	String nombre;
 	float precio;
 	int cantidad;
-	
-	
+		
 	public Producto(String _nombre, float _precio, int _cantidad) {
 		this.nombre = _nombre;
 		this.precio = _precio;
@@ -36,10 +35,10 @@ public class Producto {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return " Nombre = " + nombre + ", Precio = " + precio + ", Cantidad = " + cantidad;
+	}
+		
 }
