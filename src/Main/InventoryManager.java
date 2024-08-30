@@ -1,15 +1,19 @@
+package Main;
 
 public class InventoryManager {
 
 //	Ejercicio: Sistema de Gestión de Inventarios
 //	Descripción:
 //
-//	Crea un programa en Java que actúe como un sistema básico de gestión de inventarios. El programa debe permitir al usuario realizar las siguientes acciones:
+//	Crea un programa en Java que actúe como un sistema básico de gestión de inventarios. 
+//El programa debe permitir al usuario realizar las siguientes acciones:
 //
-//	    Agregar un producto: El usuario puede ingresar un nuevo producto al inventario. Cada producto debe tener un nombre, un precio y una cantidad disponible.
+//	    Agregar un producto: El usuario puede ingresar un nuevo producto al inventario.
+//		Cada producto debe tener un nombre, un precio y una cantidad disponible.
 //	    Mostrar todos los productos: El programa muestra todos los productos actuales en el inventario.
 //	    Buscar un producto por nombre: El usuario puede buscar un producto específico en el inventario utilizando su nombre.
-//	    Vender un producto: El usuario puede vender una cantidad de un producto específico, lo que reducirá su cantidad disponible en el inventario.
+//	    Vender un producto: El usuario puede vender una cantidad de un producto específico,
+//		lo que reducirá su cantidad disponible en el inventario.
 //	    Salir: Terminar el programa.
 //
 //	Detalles del Ejercicio:
@@ -35,7 +39,7 @@ public class InventoryManager {
 	
 	public static void main(String[] args) {
 
-
+		
 		
 
 	}
