@@ -1,5 +1,9 @@
 package Main;
 
+import java.util.Scanner;
+
+import Controller.InventoryController;
+
 public class InventoryManager {
 
 //	Ejercicio: Sistema de Gestión de Inventarios
@@ -37,11 +41,69 @@ public class InventoryManager {
 //	    boolean salir(): Permite al usuario salir del programa.
 	//Test
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-		
-		
+		try {
+					
+			Scanner scanIn = new Scanner(System.in);
+			int intSelectedNum = -1;
+			
+			InventoryController invController = new InventoryController();
+			
+			//Infinite loop
+			while (0 != 1) {
+				
+				displayMenu();
+				
+				System.out.println("Introduzca número para seleccionar la tarea a realizar: ");
+				try  {
+					intSelectedNum = scanIn.nextInt();								
+				} catch (Exception ex) {
+					throw new Exception("Valor introducido incorrecto (debe ser numérico)");
+				}
+				
+				switch (intSelectedNum) {
+				
+					case 1: {
+						invController.agregarProducto(scanIn);
+						break;
+					}
+					case 2: {
+						
+						break;
+					}
+					case 3: {
+						
+						break;
+					}
+					case 4: {
+						
+						break;
+					}
+					case 5: {
+						System.out.println();
+						System.out.println("Hasta la próxima! :)");
+						break;
+					}
+					
+				}								
+			}
+			
+		} catch (Exception ex) {
+			throw new Exception(ex.getMessage());
+		}
 
 	}
 
+	private static void displayMenu() {
+
+		System.out.println("------- MENU -------");
+		System.out.println("1. Agregar Producto");
+		System.out.println("2. Mostrar Productos");
+		System.out.println("3. Buscar Producto");
+		System.out.println("4. Vender un Producto");
+		System.out.println("5. Salir");
+		System.out.println();
+	}
+			
 }
