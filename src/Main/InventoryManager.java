@@ -46,9 +46,7 @@ public class InventoryManager {
 	
 	public static void main(String[] args) throws Exception {
 
-		try {
-					
-			Scanner scanIn = new Scanner(System.in);
+						
 			int intSelectedNum = -1;
 			
 			InventoryController invController = new InventoryController();
@@ -58,48 +56,51 @@ public class InventoryManager {
 			//Infinite loop
 			while (0 != 1) {
 				
+				Scanner scanIn = new Scanner(System.in);
+				
+				try {
+				
 				System.out.println();
 				
 				displayMenu();
 				
 				System.out.println();
 				System.out.println("Introduzca número para seleccionar la tarea a realizar: ");
-				try  {
-					intSelectedNum = scanIn.nextInt();								
+								
+				intSelectedNum = scanIn.nextInt();								
+				
+					switch (intSelectedNum) {
+					
+						case 1: {
+							invController.agregarProducto(scanIn, lstProductos);						
+							break;
+						}
+						case 2: {
+							invController.mostrarProductos(lstProductos);						
+							break;
+						}
+						case 3: {
+							invController.buscarProducto(scanIn, lstProductos);
+							break;
+						}
+						case 4: {
+							invController.venderProducto(scanIn, lstProductos);
+							break;
+						}
+						case 5: {
+							System.out.println();
+							System.out.println("Hasta la próxima! :)");
+							break;
+						}
+						
+					}
+				
 				} catch (Exception ex) {
-					throw new Exception("Valor introducido incorrecto (debe ser numérico)");
+					System.out.println(ex.getMessage());
+					scanIn.close();
 				}
 				
-				switch (intSelectedNum) {
-				
-					case 1: {
-						invController.agregarProducto(scanIn, lstProductos);						
-						break;
-					}
-					case 2: {
-						invController.mostrarProductos(lstProductos);						
-						break;
-					}
-					case 3: {
-						invController.buscarProducto(scanIn, lstProductos);
-						break;
-					}
-					case 4: {
-						
-						break;
-					}
-					case 5: {
-						System.out.println();
-						System.out.println("Hasta la próxima! :)");
-						break;
-					}
-					
-				}								
-			}
-			
-		} catch (Exception ex) {
-			throw new Exception(ex.getMessage());
-		}
+			}					
 
 	}
 

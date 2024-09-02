@@ -24,9 +24,11 @@ public class InventoryController  implements Vendible {
 		productName = scanIn.next();
 		System.out.println();					
 		
-		if (lstProductos.contains(productName)) {
-			System.out.println("El producto YA EXISTE!");
-			return;
+		for (Producto producto : lstProductos) {			
+			if (producto.getNombre().trim().equals(productName)) {
+				System.out.println("El producto" + productName + "YA EXISTE!");
+				return;
+			}			
 		}
 				
 		try {
@@ -52,10 +54,9 @@ public class InventoryController  implements Vendible {
 	
 	public void mostrarProductos(List<Producto> lstProductos) {		
 		for (int i = 0; i <= lstProductos.size() - 1; i++) {
-			System.out.print((i + 1) + ". Producto: " + lstProductos.get(i).toString());									
-		}
+			System.out.println((i + 1) + ". Producto: " + lstProductos.get(i).toString());	
+		}			
 		System.out.println();
-		
 	}
 	
 	public void buscarProducto(Scanner scanIn, List<Producto> lstProductos) {
@@ -70,6 +71,7 @@ public class InventoryController  implements Vendible {
 			if (producto.getNombre().trim().equals(productName)) {
 				System.out.println();
 				System.out.print(producto.toString());
+				System.out.println();
 				return;
 			}
 			
@@ -79,9 +81,38 @@ public class InventoryController  implements Vendible {
 	}	
 
 	@Override
-	public void venderProducto(List<Producto> lstProductos) {
+	public void venderProducto(Scanner scanIn, List<Producto> lstProductos) {
 		
+		String productName = "";
 		
+		System.out.println("Escribe el nombre del producto a vender: ");
+		productName = scanIn.next();
+		
+		for (Producto producto : lstProductos) {
+			
+			if (producto.getNombre().trim().equals(productName)) {
+				
+				System.out.println("Indique la cantidad a vender del producto: ");
+				int intCantidadaVender = scanIn.nextInt();
+				
+				int intActualCantidad = producto.getCantidad();
+				int nuevaCantidad = -1;
+				
+				if (intCantidadaVender >= intActualCantidad) {
+					nuevaCantidad = intCantidadaVender - intActualCantidad;					
+					producto.setCantidad(nuevaCantidad);		
+					System.out.println("~Cantidad Modificada~");
+					System.out.println(producto.toString());					
+				} else {
+					System.out.println("No hay tantas unidades de este producto!");						
+				}			
+												
+				return;
+			}
+			
+		}
+		
+		System.out.println("NO SE HA ENCONTRADO EL PRODUCTO: " + productName);
 	}
 	
 }

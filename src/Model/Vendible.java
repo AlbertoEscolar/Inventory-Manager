@@ -1,7 +1,8 @@
 package Model;
 
 import java.util.List;
+import java.util.Scanner;
 
 public interface Vendible {
-	public void venderProducto(List<Producto> lstProductos);
+	public void venderProducto(Scanner scaIn, List<Producto> lstProductos);
 }
