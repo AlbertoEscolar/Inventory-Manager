@@ -66,8 +66,10 @@ public class InventoryManager {
 				
 				System.out.println();
 				System.out.println("Introduzca número para seleccionar la tarea a realizar: ");
-								
-				intSelectedNum = scanIn.nextInt();								
+				
+				if (scanIn.hasNextInt()) {
+					intSelectedNum = scanIn.nextInt();												
+				}
 				
 					switch (intSelectedNum) {
 					
@@ -90,6 +92,7 @@ public class InventoryManager {
 						case 5: {
 							System.out.println();
 							System.out.println("Hasta la próxima! :)");
+							System.exit(0);
 							break;
 						}
 						

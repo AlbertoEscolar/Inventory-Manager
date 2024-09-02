@@ -21,7 +21,12 @@ public class InventoryController  implements Vendible {
 		int intCantidad;
 					
 		System.out.println("Introduzca NOMBRE del producto: ");
-		productName = scanIn.next();
+		if (scanIn.hasNext()) {
+			productName = scanIn.next();					
+		} else {
+			System.out.println("ERROR: PRECIO INCORRECTO!");
+			return;
+		}
 		System.out.println();					
 		
 		for (Producto producto : lstProductos) {			
@@ -30,22 +35,26 @@ public class InventoryController  implements Vendible {
 				return;
 			}			
 		}
-				
-		try {
-			System.out.println("Introduzca PRECIO del producto: ");
+						
+		System.out.println("Introduzca PRECIO del producto: ");
+		if (scanIn.hasNextFloat()) {								
 			productPrice = scanIn.nextFloat();
-			System.out.println();		
-		} catch (Exception ex) {
-			throw new Exception("Valor introducido para precio INCORRECTO");
+		} else {
+			System.out.println("ERROR: PRECIO INCORRECTO!");
+			return;
 		}
-		
-		try {
-			System.out.println("Introduzca CANTIDAD disponible del producto: ");
+		System.out.println();		
+
+	
+		System.out.println("Introduzca CANTIDAD disponible del producto: ");
+		if (scanIn.hasNextInt()) {								
 			intCantidad = scanIn.nextInt();
-			System.out.println();
-		} catch (Exception ex) {
-			throw new Exception("Valor introducido para cantidad INCORRECTO");
+		} else {
+			System.out.println("ERROR: CANTIDAD INCORRECTA!");
+			return;
 		}
+	
+		System.out.println();
 		
 		Producto oProducto = new Producto(productName, productPrice, intCantidad);			
 		lstProductos.add(oProducto);		
@@ -64,7 +73,13 @@ public class InventoryController  implements Vendible {
 		String productName = "";
 		
 		System.out.println("Escribe el nombre del producto a buscar: ");
-		productName = scanIn.next();
+		
+		if (scanIn.hasNext()) {								
+			productName = scanIn.next();
+		} else {
+			System.out.println("ERROR: NO HAY VALOR INTRODUCIDO!");
+			return;
+		}	
 		
 		for (Producto producto : lstProductos) {
 			
@@ -86,20 +101,32 @@ public class InventoryController  implements Vendible {
 		String productName = "";
 		
 		System.out.println("Escribe el nombre del producto a vender: ");
-		productName = scanIn.next();
+		if (scanIn.hasNext()) {								
+			productName = scanIn.next();
+		} else {
+			System.out.println("ERROR: NO HAY VALOR INTRODUCIDO!");
+			return;
+		}		
 		
 		for (Producto producto : lstProductos) {
 			
 			if (producto.getNombre().trim().equals(productName)) {
 				
+				int intCantidadaVender;
+				
 				System.out.println("Indique la cantidad a vender del producto: ");
-				int intCantidadaVender = scanIn.nextInt();
+				if (scanIn.hasNextInt()) {								
+					intCantidadaVender = scanIn.nextInt();
+				} else {
+					System.out.println("ERROR: VALOR INCORRECTO!");
+					return;
+				}						
 				
 				int intActualCantidad = producto.getCantidad();
 				int nuevaCantidad = -1;
 				
-				if (intCantidadaVender >= intActualCantidad) {
-					nuevaCantidad = intCantidadaVender - intActualCantidad;					
+				if (intActualCantidad >= intCantidadaVender) {
+					nuevaCantidad = intActualCantidad - intCantidadaVender;					
 					producto.setCantidad(nuevaCantidad);		
 					System.out.println("~Cantidad Modificada~");
 					System.out.println(producto.toString());					
